@@ -1,10 +1,10 @@
-# Frontend Mentor - QR code component solution
+# Take A Quiz - Codebase
 
 This app uses the Trivia API to retrieve questions from the database and uses React to render them to the screen. We this app you can take a challenge to answer questions on random topics or select any category and answer randomly generated questions.
 
 ## Table of contents
 
-- [Frontend Mentor - QR code component solution](#frontend-mentor---qr-code-component-solution)
+- [Take A Quiz - Codebase](#take-a-quiz---codebase)
   - [Table of contents](#table-of-contents)
   - [Overview](#overview)
     - [Links](#links)
