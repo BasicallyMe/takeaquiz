@@ -1,5 +1,11 @@
+@import url('./core/satoshi.css');
 body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+body h1 {
+    padding: 0;
+    margin: 0;
 }
