@@ -1,0 +1,13 @@
+@import '../../core/variables.scss';
+
+.result-container {
+    color: white;
+    h1 {
+        font-family: $medium;
+        text-align: center;
+    }
+    p {
+        font-family: $regular;
+        margin-top: 3px;
+    }
+}
