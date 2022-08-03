@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
+import gsap, { Linear } from "gsap";
 import OptionButton from "./OptionButton";
 import useQuestionStore from "./store";
 import "./QuizBlock.scss";
@@ -9,6 +10,7 @@ const QuizBlock = () => {
   const [selectedOption, setSelectedOption] = useState({});
   const [showAnswer, setShowAnswer] = useState(false);
   const MAXQUESTIONS = questions.length;
+  const progressRef = useRef();
 
   function handleOptionClick(option, index) {
     setSelectedOption({option: option, index: index});
@@ -19,22 +21,39 @@ const QuizBlock = () => {
       console.log('empty');
     } else {
       setShowAnswer(true)
-      if(selectedOption.option.isCorrect === true) updateScore()
+      if(selectedOption.option.isCorrect === true) updateScore();
       setTimeout(() => {
-        setShowAnswer(false);
-        if(currentIndex < MAXQUESTIONS - 1) {
-          setCurrentIndex(currentIndex + 1);
-        } else {
-          changeComplete();
-        }
-        setSelectedOption({});
-      }, 1500);
+        changeQuestion()
+      }, 1000);
     }
   }
 
+  function changeQuestion() {
+    setShowAnswer(false);
+    if (currentIndex < MAXQUESTIONS - 1) {
+      setCurrentIndex(currentIndex + 1);
+    } else {
+      changeComplete();
+    }
+    setSelectedOption({});
+  }
+
+  function animateProgressBar() {
+    const progressBar = progressRef.current.children[0];
+    gsap.fromTo(progressBar, { width: '100%' }, { width: 0, duration: 5, ease: Linear.easeNone, onComplete: () => changeQuestion() });
+  }
+
+  useEffect(() => {
+    animateProgressBar();
+  }, []);
+
+  useEffect(() => {
+    animateProgressBar();
+  }, [currentIndex])
+
   return (
     <div className="quiz-block">
-      <div className="progress-bar">
+      <div className="progress-bar" ref={progressRef}>
         <div className="progress-bar-inner"></div>
       </div>
       <div className="content">

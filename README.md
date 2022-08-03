@@ -16,11 +16,12 @@ This app uses the Trivia API to retrieve questions from the database and uses Re
   - [Author](#author)
 
 ## Overview
+This app uses the **Trivia API** to fetch the questions. The questions are then displayed along with the options. Also while displaying the options, I've used the shuffle function of underscore library to shuffle the array a little bit so the the appearance of the options are at random.
 
 ### Links
 
 - Solution URL: [Github repo](https://github.com/BasicallyMe/takeaquiz)
-- Live Site URL: [Under construction]()
+- Live Site URL: [Take a quiz](https://takeaquiz.pages.dev/)
 
 ## My process
 

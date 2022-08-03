@@ -18,7 +18,7 @@
         .progress-bar-inner {
             background-color: $white;
             height: 100%;
-            width: 20%;
+            width: 100%;
             border-radius: inherit;
         }
     }
@@ -45,7 +45,8 @@
 
         .option-button {
             text-align: left;
-            padding: 10px 10px;
+            padding: 5px 15px;
+            min-height: $button-height;
             width: 80%;
             background-color: $white;
             border: none;
@@ -80,7 +81,8 @@
         background-color: $gold;
         border: none;
         border-radius: 10px;
-        padding: 10px;
+        padding: 0px 10px;
+        min-height: $button-height;
         width: 80%;
         align-self: center;
         color: $white;
@@ -97,8 +99,20 @@
     .quiz-block {
         max-width: 100%;
         height: 100%;
-        gap: 40px;
+        gap: 35px;
         background-color: $primary-background;
         box-shadow: none;
+        padding: 40px 30px;
+
+        .options {
+            .option-button {
+                font-size: 1rem;
+                width: 100%;
+            }
+        }
+        .submit-button {
+            font-size: 1rem;
+            width: 100%;
+        }
     }
 }
