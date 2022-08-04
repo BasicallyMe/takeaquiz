@@ -3,6 +3,9 @@
 .result-container {
     height: 100vh;
     color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     h1 {
         font-family: $medium;
         text-align: center;

@@ -2,7 +2,7 @@ import create from "zustand";
 
 const useQuestionStore = create((set) => ({
   isReady: false,
-  isComplete: false,
+  isComplete: true,
   score: 0,
   questions: [],
   answers: [],
