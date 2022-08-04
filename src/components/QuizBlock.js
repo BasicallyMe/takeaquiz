@@ -11,45 +11,57 @@ const QuizBlock = () => {
   const [showAnswer, setShowAnswer] = useState(false);
   const MAXQUESTIONS = questions.length;
   const progressRef = useRef();
+  let tl = gsap.timeline();
 
   function handleOptionClick(option, index) {
-    setSelectedOption({option: option, index: index});
+    setSelectedOption({ option: option, index: index });
   }
 
   function handleSubmitClick() {
-    if(Object.keys(selectedOption).length === 0) {
-      console.log('empty');
+    tl.pause();
+    if (Object.keys(selectedOption).length === 0) {
+      console.log("empty");
     } else {
-      setShowAnswer(true)
-      if(selectedOption.option.isCorrect === true) updateScore();
-      setTimeout(() => {
-        changeQuestion()
-      }, 1000);
+      if (selectedOption.option.isCorrect === true) updateScore();
+      changeQuestion();
     }
   }
 
   function changeQuestion() {
-    setShowAnswer(false);
-    if (currentIndex < MAXQUESTIONS - 1) {
-      setCurrentIndex(currentIndex + 1);
-    } else {
-      changeComplete();
-    }
-    setSelectedOption({});
+    setShowAnswer(true);
+    setTimeout(() => {
+      setShowAnswer(false);
+      if (currentIndex < MAXQUESTIONS - 1) {
+        setCurrentIndex(currentIndex + 1);
+      } else {
+        console.log('complete');
+        changeComplete();
+      }
+      setSelectedOption({});
+    }, 2000)
   }
 
   function animateProgressBar() {
     const progressBar = progressRef.current.children[0];
-    gsap.fromTo(progressBar, { width: '100%' }, { width: 0, duration: 5, ease: Linear.easeNone, onComplete: () => changeQuestion() });
+    tl.fromTo(
+      progressBar,
+      { width: "100%" },
+      {
+        width: 0,
+        duration: 5,
+        ease: Linear.easeNone,
+        onComplete: () => changeQuestion(),
+      }
+    );
   }
 
-  useEffect(() => {
-    animateProgressBar();
-  }, []);
+  // useEffect(() => {
+  //   animateProgressBar();
+  // }, []);
 
   useEffect(() => {
     animateProgressBar();
-  }, [currentIndex])
+  }, [currentIndex]);
 
   return (
     <div className="quiz-block">

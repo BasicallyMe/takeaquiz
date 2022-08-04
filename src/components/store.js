@@ -10,7 +10,7 @@ const useQuestionStore = create((set) => ({
   addAnswers: (option) => set((state) => ({ answers: [...state.answers, option]})),
   setQuestions: (questions) => set((state) => ({ questions: questions })),
   changeReadyState: () => set(state => ({ isReady: true})), 
-  changeComplete: () => set(state => ({isComplete: !state.isComplete})),
+  changeComplete: () => set(state => ({isComplete: true})),
 }));
 
 export default useQuestionStore;
